@@ -1,0 +1,41 @@
+/* Scoreboard.css */
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.player.active {
+  background-color: #e0e0e0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.player-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.player-score {
+  font-size: 1.5em;
+}
+
+.player.black .player-name {
+  color: #333;
+}
+
+.player.white .player-name {
+  color: #666;
+}

@@ -1,0 +1,85 @@
+/* Board.css */
+:root {
+  --square-size: min(60px, calc((100vw - 40px) / 8));
+  --light-square-color: #f0d9b5;
+  --dark-square-color: #b58863;
+  --board-border-color: #8b4513;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--board-border-color);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, var(--square-size));
+  grid-template-rows: repeat(8, var(--square-size));
+  border: 2px solid var(--board-border-color);
+  background-color: var(--light-square-color);
+}
+
+.square {
+  width: var(--square-size);
+  height: var(--square-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.square.black-square {
+  background-color: var(--dark-square-color);
+}
+
+.square.white-square {
+  background-color: var(--light-square-color);
+}
+
+.square.selected {
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 0, 0.5);
+}
+
+.square.capturing {
+  box-shadow: inset 0 0 0 4px rgba(255, 0, 0, 0.5);
+}
+
+.animating-piece {
+  position: absolute;
+  width: calc(0.8 * var(--square-size));
+  height: calc(0.8 * var(--square-size));
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes movePiece {
+  to {
+    transform: translate(
+      calc((var(--end-col) - var(--start-col)) * var(--square-size)),
+      calc((var(--end-row) - var(--start-row)) * var(--square-size))
+    );
+  }
+}
+
+.animating-piece {
+  animation: movePiece 0.5s ease-in-out forwards;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --square-size: min(40px, calc((100vw - 20px) / 8));
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --square-size: min(35px, calc((100vw - 10px) / 8));
+  }
+}
