@@ -26,9 +26,9 @@ function Board({ forcedCapture, playerColor, moveSpeed }) {
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
         if ((row + col) % 2 === 1) {
-          if (row < 3) {
+          if (col < 3) {
             newBoard[row][col] = { color: 'black', isKing: false }
-          } else if (row > 4) {
+          } else if (col > 4) {
             newBoard[row][col] = { color: 'white', isKing: false }
           }
         }
